@@ -1,0 +1,32 @@
+
+
+library(ggplot2)
+
+df_2020 <- read.csv('/Users/sourabh/Downloads/2020 Cases only-1 (1).csv')
+df_2021 <- read.csv('/Users/sourabh/Downloads/2021 Cases only-1 (1).csv')
+df_2020_proc <- subset(df_2020, select = -c(OBJECTID, Age_group, Case_, Case1, ChartDate) )
+names(df_2020_proc)[names(df_2020_proc) == 'ObjectId2'] <- 'ObjectId'
+df_2021_proc <- subset(df_2021, select = -c(Age_group, Case_, Case1, ChartDate) )
+df_all <- rbind(df_2020_proc, df_2021_proc)
+ggplot(df_all, aes(x=EventDate)) +
+  geom_bar()
+
+df_all$Date <- as.Date(df_all$EventDate, "%m/%d/%Y")
+
+
+
+tb_df <- df_all[(df_all$County == 'Suwannee' | 
+                   df_all$County == 'Monroe' |
+                   df_all$County == 'Hardee' |
+                   df_all$County == 'Walton'),]
+
+tb_df$County <- factor(tb_df$County, levels=c('Suwannee', 'Monroe', 'Hardee', 'Walton'))
+
+
+
+ggplot(tb_df, aes(x=Date)) +
+  stat_count(geom="line") +
+  
+facet_wrap(~ County, nrow = 2, ncol = 2, 
+           labeller = labeller(County = c(Suwannee = "Suwannee", Monroe = "Monroe", Hardee = "Hardee", Walton = "Walton")))
+  
