@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=1024">
+    <title>Organic Garden Registration Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="registration.css">
+    <script defer src="reg.js"></script>   
+</head>
+<body>
+<div class="topnav">
+    <a class="active" href="ProductsPage.html">Products</a>
+    <a href="AboutUs.html">About Us</a>
+    <a href="index.html">Home</a>
+    
+  </div>
+      
+  
+    <div class="container">
+        <form id="form" action="/">
+            <h1>Registration</h1>
+            <div class="input-control">
+                <label for="username">Username</label>
+                <input id="username" placeholder="Enter Username" name="username" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" placeholder="Enter Email" name="email" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input id="password"placeholder="Enter Password" name="password" type="password">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password2">Repeat Password</label>
+                <input id="password2" placeholder="Repeat Password" name="password2" type="password">
+                <div class="error"></div>
+            </div>
+            <button onclick="myFunction()" id="register" type="submit">Register</button>
+
+ 
+<h2 style="text-align:center">Already have an account?</h2>
+
+<button id="login" type="submit">Log In Instead</button>
+
+<script type="text/javascript">
+    document.getElementById("login").onclick = function () {
+    location.href = "login.html";
+    }
+    </script>
+        </form>
+    </div>
+
+    <footer>
+        <p>Copyright © 2022, University of South Florida. All rights reserved.
+          This website is maintained by Group 4.<br>
+      </footer>
+</body>
+</html>
